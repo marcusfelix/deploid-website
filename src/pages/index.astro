@@ -1,0 +1,220 @@
+---
+import Warpspeed from '../components/warpspeed.astro';
+import Website from '../layouts/website.astro';
+import { IconArrowDownRight, IconArrowRight, IconBrandFirebase, IconBrandSupabase, IconCircleDotted, IconCircleSquare, IconDeviceDesktop, IconDeviceTablet, IconEdit, IconPencil, IconPointer, IconServer, IconSparkles, IconWorld } from '@tabler/icons-preact';
+---
+
+<Website title="Deploid Studio">
+	<div class="absolute top-0 left-0 right-0 h-[800px] warp">
+		<div class="absolute w-full h-3/4 bottom-0 bg-gradient-to-b from-transparent to-black"></div>
+		<Warpspeed/>
+	</div>
+	<main class="relative container mx-auto px-4">
+		<div class="flex flex-col items-start max-w-5xl py-10 md:py-28 gap-10">
+			<h1 class="text-6xl md:text-8xl font-semibold tracking-tight">Unlimited design & development partner — one task at a time</h1>
+			<p class="text-2xl text-zinc-500 max-w-2xl">Best time to value for your digital product development with unlimited services from design to code.</p>
+			<div class="flex flex-col md:flex-row items-start gap-6">
+				<button class="bg-blue-700 text-blue-100 text-xl px-5 py-3 rounded-lg">Create your workspace — <span class="opacity-50">Slack</span></button>
+				<div class="flex items-center justify-center gap-2 text-lg">
+					<span class="flex items-center justify-center relative aspect-square h-12 w-12">
+						<span class="slow-spin absolute text-zinc-500"><IconCircleDotted size={48} /></span>
+						<span class="pt-[1px] font-bold">5</span>
+					</span>
+					Spots available
+				</div>
+			</div>
+		</div>
+	</main>
+	<section class="overflow-y-auto snap-x md:snap-none px-6 no-scroll">
+		<div class="flex gap-6 h-full md:h-[560px] pb-4">
+			<img class="aspect-square bg-zinc-800 object-cover snap-center rounded-3xl shrink-0" src="/assets/expo-1.jpg"/>
+			<img class="aspect-square bg-zinc-800 object-cover snap-center rounded-3xl shrink-0" src="/assets/expo-2.jpg"/>
+			<img class="aspect-square bg-zinc-800 object-cover snap-center rounded-3xl shrink-0" src="/assets/expo-3.jpg"/>
+			<div class="aspect-square bg-zinc-800 object-cover snap-center rounded-3xl shrink-0"/>
+		</div>
+	</section>
+	<div class="h-20 md:h-32"></div>
+	<section class="container mx-auto px-4 flex flex-col gap-8 xl:flex-row items-start">
+		<div class="flex flex-1">
+			<h3 class="text-4xl md:text-6xl md:leading-tight">You can get design and development for your digital product, in a single place, like if you have an intire department working for you, for a simple monthly fee and without any contracts.</h3>
+		</div>
+		<div class="flex-1 grid grid-cols-2 gap-10 py-2 max-w-lg">
+			<div class="flex flex-col gap-4">
+				<big class="text-6xl">10+</big>
+				<p class="text-xl text-zinc-500">Projects delivered on time in the last 3y</p>
+			</div>
+			<div class="flex flex-col gap-4">
+				<big class="text-6xl">35m</big>
+				<p class="text-xl text-zinc-500">Average time to deliver revision tasks ¹</p>
+			</div>
+			
+		</div>
+	</section>
+	
+	<div class="h-20 md:h-32"></div>
+	<section class="container mx-auto px-4">
+		<div class="flex flex-col md:flex-row gap-12">
+			<nav class="w-full max-w-sm">
+				<a class="flex items-center gap-4 text-2xl"><IconArrowDownRight size={32}/> Starter kits</a>
+			</nav>
+			<div class="w-full flex flex-col gap-12">
+        {[1].map((e) => <div class="flex flex-col 2xl:flex-row gap-8">
+					<div class="flex flex-col gap-4 max-w-sm">
+						<div class="flex gap-4 items-center">
+							<span class="px-3 py-1 bg-blue-700 text-blue-400 uppercase text-[18px] font-semibold rounded-lg">Mobile</span>
+							<h3 class="text-4xl font-semibold"> Requests</h3>
+						</div>
+						<p class="text-2xl text-zinc-500">Offer your productized services with a onboarding, task system and chat platform</p>
+					</div>
+					<div class="aspect-video w-full bg-zinc-800 rounded-2xl"></div>
+				</div>)}
+			</div>
+		</div>
+	</section>
+	<div class="h-20 md:h-32"></div>
+	<section class="container mx-auto px-4">
+		<div class="flex flex-col md:flex-row gap-12">
+			<nav class="w-full max-w-sm">
+				<a class="flex items-center gap-4 text-2xl"><IconArrowDownRight size={32}/> Pricing</a>
+				<div class="h-2"></div>
+				<p class="text-zinc-500 max-w-xs">You can change, pause or cancel your subscription anytime</p>
+			</nav>
+			<div class="w-full grid grid-cols-1 xl:grid-cols-2 gap-4">
+        <div class="p-6 flex flex-col gap-4 border-2 border-zinc-800 rounded-2xl">
+					<div class="flex items-center text-xl gap-4">
+						<h3 class="font-semibold">Design</h3>
+						<span class="bg-purple-600/40 text-purple-200 text-[18px] px-3 py-1 rounded-lg">$249 per week</span>
+					</div>
+					<p class="text-lg">Elaborate your idea with hi-fidelity mockups and feedback loops before committing to code</p>	
+					<div class="flex-1"></div>
+					<div class="flex justify-between">
+						<span class="py-2 flex items-center gap-2 text-md text-zinc-500">3 days to try</span>
+						<span></span>
+						<a href="https://buy.stripe.com/test_6oE5lva8keu6bK0bII" target="_blank" class="px-4 py-2 rounded-xl flex items-center gap-2 text-lg bg-white text-black">Subscribe <IconArrowRight/></a>
+					</div>
+				</div>
+				<div class="p-6 flex flex-col gap-4 border-2 border-zinc-800 rounded-2xl">
+					<div class="flex items-center text-xl gap-4">
+						<h3 class="font-semibold">Code</h3>
+						<span class="bg-cyan-600/40 text-cyan-200 text-[18px] px-3 py-1 rounded-lg">$749 per week</span>
+					</div>
+					<p class="text-lg">Full development service to materialized your vision with code and unlimited incremental changes</p>	
+					<div class="flex-1"></div>
+					<div class="flex justify-between">
+            <span></span>
+						<a href="https://buy.stripe.com/test_6oE5lva8keu6bK0bII" target="_blank" class="px-4 py-2 rounded-xl flex items-center gap-2 text-lg bg-white text-black">Subscribe <IconArrowRight/></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<div class="h-20 md:h-32"></div>
+	<section class="container mx-auto px-4">
+		<div class="flex flex-col md:flex-row gap-12">
+			<nav class="text-2xl w-full max-w-sm">
+				<span class="flex items-center gap-4"><IconArrowDownRight size={28}/>Services</span>
+			</nav>
+			<div class="w-full grid grid-cols-1 md:grid-cols-4 gap-x-4 gap-y-6">
+				<div class="px-1 flex gap-4 items-center text-lg"><span class="text-zinc-500"><IconEdit/></span> Branding</div>
+				<div class="px-1 flex gap-4 items-center text-lg"><span class="text-zinc-500"><IconCircleSquare/></span> Icons</div>
+				<div class="px-1 flex gap-4 items-center text-lg"><span class="text-zinc-500"><IconDeviceTablet/></span> Mockups</div>
+				<div class="px-1 flex gap-4 items-center text-lg"><span class="text-zinc-500"><IconPencil/></span> Illustrations</div>
+				<div class="px-1 flex gap-4 items-center text-lg"><span class="text-zinc-500"><IconWorld/></span> Landing pages</div>
+				<div class="px-1 flex gap-4 items-center text-lg"><span class="text-zinc-500"><IconDeviceTablet/></span> Mobile apps</div>
+				<div class="px-1 flex gap-4 items-center text-lg"><span class="text-zinc-500"><IconPointer/></span> Web apps</div>
+				<div class="px-1 flex gap-4 items-center text-lg"><span class="text-zinc-500"><IconDeviceDesktop/></span> Desktop apps</div>
+				<div class="px-1 flex gap-4 items-center text-lg"><span class="text-zinc-500"><IconBrandFirebase/></span> Firebase</div>
+				<div class="px-1 flex gap-4 items-center text-lg"><span class="text-zinc-500"><IconBrandSupabase/></span> Supabase</div>
+				<div class="px-1 flex gap-4 items-center text-lg"><span class="text-zinc-500"><IconServer/></span> Custom backend</div>
+			</div>
+		</div>
+	</section>
+	<div class="h-20 md:h-32"></div>
+	<section class="container mx-auto px-4">
+		<div class="flex flex-col md:flex-row gap-12">
+			<nav class="text-2xl w-full max-w-sm">
+				<a class="flex items-center gap-4"><IconArrowDownRight size={32}/> Frequent questions</a>
+			</nav>
+			<div class="w-full flex flex-col gap-6">
+				<details>
+					<summary class="flex items-center gap-4 list-none text-2xl  cursor-pointer">
+						<span class="w-7 h-7 bg-zinc-700 text-white text-sm font-bold rounded-full flex items-center justify-center shrink-0">1</span>
+						Is there a request limit?
+					</summary>
+					<div class="py-4 text-lg pl-11 text-zinc-500">
+						<p>Absolutely not! You can send as many requests you want, so they will be processed one at a time.</p>
+					</div>
+				</details>
+				<hr class="border-zinc-700"/>
+				<details>
+					<summary class="flex items-center gap-4 list-none text-2xl  cursor-pointer">
+						<span class="w-7 h-7 bg-zinc-700 text-white text-sm font-bold rounded-full flex items-center justify-center shrink-0">2</span>
+						How fast will my requests will be delivered?
+					</summary>
+					<div class="py-4 text-lg pl-11 text-zinc-500">
+						<p>For simple designs or small code changes, you will receive a draft within 3 days max. More complex tasks will be splited in smaller ones so we can keep fast feedback loop times.</p>
+					</div>
+				</details>
+				<hr class="border-zinc-700"/>
+				<details>
+					<summary class="flex items-center gap-4 list-none text-2xl  cursor-pointer">
+						<span class="w-7 h-7 bg-zinc-700 text-white text-sm font-bold rounded-full flex items-center justify-center shrink-0">3</span>
+						What if i don't have more requests?
+					</summary>
+					<div class="py-4 text-lg pl-11 text-zinc-500">
+						<p>You can simply pause your weekly subscription until you have more work to be done.</p>
+					</div>
+				</details>
+				<hr class="border-zinc-700"/>
+				<details>
+					<summary class="flex items-center gap-4 list-none text-2xl  cursor-pointer">
+						<span class="w-7 h-7 bg-zinc-700 text-white text-sm font-bold rounded-full flex items-center justify-center shrink-0">4</span>
+						What if i don't like the results?
+					</summary>
+					<div class="py-4 text-lg pl-11 text-zinc-500">
+						<p>Don't worry, we'll continue with the feedback loop until you are 100% satisfied.</p>
+					</div>
+				</details>
+				<hr class="border-zinc-700"/>
+				<details>
+					<summary class="flex items-center gap-4 list-none text-2xl  cursor-pointer">
+						<span class="w-7 h-7 bg-zinc-700 text-white text-sm font-bold rounded-full flex items-center justify-center shrink-0">5</span>
+						Where can i submit my requests?
+					</summary>
+					<div class="py-4 text-lg pl-11 text-zinc-500">
+						<p>You will have a private Slack channel where you can send requests and comunicate with our team. You can <a href="/start" class="text-blue-700">create your workspace</a> right now for free. Fell free to invite team mates to participate.</p>
+					</div>
+				</details>
+				<hr class="border-zinc-700"/>
+				<details>
+					<summary class="flex items-center gap-4 list-none text-2xl  cursor-pointer">
+						<span class="w-7 h-7 bg-zinc-700 text-white text-sm font-bold rounded-full flex items-center justify-center shrink-0">6</span>
+						Why weekly subscriptions?
+					</summary>
+					<div class="py-4 text-lg pl-11 text-zinc-500">
+						<p>A week is the perfect time frame to plan, execute and test a complete feature. Keep delivering code is important to maintain your product evolving while serving users at the same time. With all that in mind, we offer weekly subscriptions as a complete unit of compreensive work to reduce risks and delivery value to our customers one week at time.</p>
+					</div>
+				</details>
+			</div>
+		</div>
+	</section> 
+</Website>
+
+<style scoped>
+  .spin {
+    animation: spin 1s linear infinite;
+    transform-origin: center center;
+  }
+
+  .slow-spin {
+    animation: spin 15s linear infinite;
+    transform-origin: center center;
+  }
+
+  @keyframes spin {
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+</style>
