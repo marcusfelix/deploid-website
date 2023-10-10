@@ -1,4 +1,5 @@
 ---
+import Gallery from '../components/gallery';
 import Warpspeed from '../components/warpspeed.astro';
 import Website from '../layouts/website.astro';
 import { IconArrowDownRight, IconArrowRight, IconBrandFirebase, IconBrandSupabase, IconCircleDotted, IconCircleSquare, IconDeviceDesktop, IconDeviceTablet, IconEdit, IconPencil, IconPointer, IconServer, IconSparkles, IconWorld } from '@tabler/icons-preact';
@@ -25,14 +26,7 @@ import { IconArrowDownRight, IconArrowRight, IconBrandFirebase, IconBrandSupabas
 			</div>
 		</div>
 	</main>
-	<section class="overflow-y-auto snap-x md:snap-none px-6 no-scroll">
-		<div class="flex gap-6 h-full md:h-[560px] pb-4">
-			<img class="aspect-square bg-zinc-800 object-cover snap-center rounded-3xl shrink-0" src="/assets/expo-1.jpg"/>
-			<img class="aspect-square bg-zinc-800 object-cover snap-center rounded-3xl shrink-0" src="/assets/expo-2.jpg"/>
-			<img class="aspect-square bg-zinc-800 object-cover snap-center rounded-3xl shrink-0" src="/assets/expo-3.jpg"/>
-			<div class="aspect-square bg-zinc-800 object-cover snap-center rounded-3xl shrink-0"/>
-		</div>
-	</section>
+	<Gallery client:load/>
 	<div class="h-20 md:h-32"></div>
 	<section class="container mx-auto px-4 flex flex-col gap-8 xl:flex-row items-start">
 		<div class="flex flex-1">
