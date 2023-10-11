@@ -23,7 +23,7 @@ export const createAndInviteUserToSlack = async (slug: string, email: string): P
     },
     body: JSON.stringify({
       channel: channel.channel.id,
-      users: "U059DBHUTJT"
+      users: "U05V9NC2RJR"
     })
   }).then((data) => data.json() as any)
 

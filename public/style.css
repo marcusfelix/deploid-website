@@ -1,0 +1,16 @@
+.spin {
+  animation: spin 1s linear infinite;
+  transform-origin: center center;
+}
+
+.slow-spin {
+  animation: spin 15s linear infinite;
+  transform-origin: center center;
+}
+
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}

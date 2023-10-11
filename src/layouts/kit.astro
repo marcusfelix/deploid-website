@@ -1,0 +1,49 @@
+---
+import { IconEdit, IconChecklist, IconRotateRectangle, IconArrowRight } from "@tabler/icons-preact";
+import Website from "./website.astro";
+
+const { frontmatter } = Astro.props;
+const slug = frontmatter.url.split("/").at(-1);
+---
+
+<Website title={frontmatter.name + " - Deploid Studio"}>
+  <div class="container mx-auto px-4 py-14">
+    <div class="flex flex-col md:flex-row gap-4 justify-between">
+      <div class="flex flex-col gap-2 flex-1">
+        <h1 class="text-4xl font-medium">{frontmatter.name}</h1>
+        <p class="text-2xl text-zinc-500">{frontmatter.description}</p>
+      </div>
+      <div class="flex gap-4 items-end flex-1">
+        {frontmatter.tags.map((tag: string) => <span class="bg-zinc-700 text-zinc-200 px-3 py-1 rounded-full uppercase text-sm font-bold">{tag}</span>)}
+      </div>
+    </div>
+  </div>
+  <div class="flex justify-center">
+    <div class="h-[700px] w-full max-w-[1700px] bg-white/20"></div>
+  </div>
+  <!-- <div class="flex gap-6 px-4 overflow-x-auto snap-x bg-white/20 py-10">
+    {frontmatter.images.map((image: string) => <img src={image} class="aspect-[9/19.5] bg-gray-100 w-[320px] shrink-0 rounded-xl overflow-hidden shadow-md object-fit snap-center"/>)}
+  </div> -->
+  <div class="container mx-auto px-4 pt-10 md:pt-20">
+    <div class="flex flex-col lg:flex-row items-stretch gap-20 md:gap-8">
+      <div class="flex-1 flex flex-col gap-12">
+        <div class="prose-lg">
+          <slot/>
+        </div>
+      </div>
+      <div class="flex-1 flex flex-col max-w-sm gap-4">
+        <!-- <div class="flex flex-col gap-2 px-6 py-4 bg-gray-100 text-gray-600 rounded-xl">
+          <IconRotateRectangle size={30}/>
+          <h3 class="text-xl font-semibold">Start light years ahead</h3>
+          <p class="text-gray-400">Jump right to the important details of your digital product with a solid starter kit foundation</p>
+        </div>
+        <div class="flex flex-col gap-2 px-6 py-4 bg-gray-100 text-gray-600 rounded-xl">
+          <IconChecklist size={30}/>
+          <h3 class="text-xl font-semibold">Designated Project Manager</h3>
+          <p class="text-gray-400">Need to make changes and solve problemas? Contact your designated Project Manager to get stuff done.</p>
+        </div> -->
+        <button class="bg-blue-700 text-blue-100 text-xl px-5 py-3 rounded-lg">Create your workspace — <span class="opacity-50">Slack</span></button>
+      </div>
+    </div>
+  </div>
+</Website>
