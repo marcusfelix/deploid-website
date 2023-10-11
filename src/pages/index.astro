@@ -18,11 +18,11 @@ const kits = await Astro.glob('./kits/*.md');
 	</main>
 	<Gallery client:load/>
 	<div class="h-20 md:h-32"></div>
-	<section class="container mx-auto px-4 flex flex-col gap-8 xl:flex-row items-start">
+	<section class="container mx-auto px-4 flex flex-col gap-10 xl:flex-row items-start">
 		<div class="flex flex-1">
-			<h3 class="text-4xl md:text-6xl md:leading-tight">You can get design and development for your digital product, in a single place, like if you have an intire department working for you, for a simple monthly fee and without any contracts.</h3>
+			<h3 class="text-4xl leading-snug md:text-6xl md:leading-tight">Materialize your digital project with a on demand design and development service without strings attached — as long you have a active subscription you have full access to our service and support.</h3>
 		</div>
-		<div class="flex-1 grid grid-cols-2 gap-10 py-2 max-w-lg">
+		<div class="flex-1 grid grid-cols-2 gap-10 py-3 max-w-lg">
 			<div class="flex flex-col gap-4">
 				<big class="text-6xl">10+</big>
 				<p class="text-xl text-zinc-500">Projects delivered on time in the last 3y</p>
@@ -30,6 +30,14 @@ const kits = await Astro.glob('./kits/*.md');
 			<div class="flex flex-col gap-4">
 				<big class="text-6xl">35m</big>
 				<p class="text-xl text-zinc-500">Average time to deliver revision tasks ¹</p>
+			</div>
+			<div class="flex flex-col gap-4">
+				<big class="text-6xl">180d</big>
+				<p class="text-xl text-zinc-500">To design and code a simple mobile app</p>
+			</div>
+			<div class="flex flex-col gap-4">
+				<big class="text-6xl">4h</big>
+				<p class="text-xl text-zinc-500">To receive our first chat response </p>
 			</div>
 		</div>
 	</section>
@@ -39,7 +47,7 @@ const kits = await Astro.glob('./kits/*.md');
 	<hr class="border-zinc-700"/>
 	{kits.map((e) => <a href={`kits/${e.file.split('/').at(-1)?.split('.').at(0)}`} class="hover:bg-zinc-300/10 block border-b-[1px] border-zinc-700 transition-colors">
 		<div class="container mx-auto py-8 px-4">
-			<div class="flex flex-col md:flex-row gap-8">
+			<div class="flex flex-col md:flex-row justify-between gap-8">
 				<div class="flex flex-col gap-4 max-w-sm">
 					<div class="flex flex-col gap-4 items-start">
 						<span class="px-3 py-1 bg-green-700 text-green-300 uppercase text-[16px] font-semibold rounded-lg">Starter kit</span>
@@ -48,7 +56,7 @@ const kits = await Astro.glob('./kits/*.md');
 					<p class="text-2xl text-zinc-500">{e.frontmatter.description}</p>
 					<div class="flex gap-2">{e.frontmatter.tags.map((e: any) => <span class="px-3 py-1 border-[2px] text-zinc-500 border-zinc-700 text-sm font-semibold uppercase rounded-full">{e}</span>)}</div>
 				</div>
-				<div class="aspect-video w-full bg-zinc-300/10 rounded-2xl"></div>
+				<div class="aspect-video w-full max-w-4xl bg-zinc-300/10 rounded-2xl"></div>
 			</div>	
 		</div>
 	</a>)}
