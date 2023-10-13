@@ -39,66 +39,86 @@ export const POST: APIRoute = async function get({ params, request, locals }: an
   if (event === undefined) {
     console.log("Event is undefined")
   } else {
-    const { DEPLOID_SUBSCRIPTIONS } = locals.runtime.env;
+    const KV = locals.runtime.env.DEPLOID_SUBSCRIPTIONS as KVNamespace;
+    const data = event.data.object as any;
 
     switch (event.type) {
-      case 'checkout.session.completed': {
-        const data = event.data.object as Stripe.Checkout.Session;
-        const random = Math.random().toString(36).substring(2, 8);
-        const email = data.customer_details?.email
-        const slug = replaceNonAlphanumericWithHyphen(email?.split('@')[0]!) + "-" + random
-
-        if(email) {
-          // Create Slack channel and invite user
-          const invite = await createAndInviteUserToSlack(slug, email)
-
-          // Save email and channel id to Cloudflare KV
-          await DEPLOID_SUBSCRIPTIONS.put(data.subscription, JSON.stringify({
-            email: data.customer_details?.email,
-            channel: invite.channel.id
-          }))
-        }
-      }
 
       case "customer.subscription.created": {
-        const data = event.data.object as Stripe.Subscription
+        // Get Stripe customer
+        const customer = await stripe().customers.retrieve(data.customer as string) as Stripe.Customer
+        const email = customer.email
+        if(email) {
+          const random = Math.random().toString(36).substring(2, 8);
+          const slug = (replaceNonAlphanumericWithHyphen(email?.split('@')[0]!) + "-" + random).toLowerCase()
 
-        // Fetch Slack channel id from Cloudflare KV
-        const local = await DEPLOID_SUBSCRIPTIONS.get(data.id)
-        
-        if(local) {
-          // Send welcome email
-          const html = welcomeTemplate.replace("SLACK_URL", `https://deploidstudio.slack.com/archives/${local.channel}`).replace("PORTAL_URL", import.meta.env.CUSTOMER_PORTAL_URL);
-          await sendHTMLEmail("noreply@deploid.studio", local.email, "Welcome to Deploid Studio", html)
+          // Create Slack channel and invite user
+          const invite = await createAndInviteUserToSlack(slug, email)
+          const channel = invite.channel.channel.id
+          
+          // Send welcome messages
+          const html = welcomeTemplate.replace("SLACK_URL", `https://deploidstudio.slack.com/archives/${channel}`).replace("PORTAL_URL", import.meta.env.CUSTOMER_PORTAL_URL);
+          await sendHTMLEmail("noreply@deploid.studio", email, "Welcome to Deploid Studio", html)
+          if(channel){
+            await sendChannelMessage(channel, "Welcome to *Deploid Studio*! We're glad to have you here. If you have any questions, please let us know.")
+            await sendChannelMessage(channel, "In this channel we will be expecting your tasks for our team. You can share ideas, files and links to get more elaborated feedback.")
+            await sendChannelMessage(channel, "We have a no-call policy to keep a fast and asynchronous communication. If you need to talk to us in a multimedia way, like a screen cast or webcam recording, consider using https://www.loom.com/ and share the link here. We will be happy to help you.")
+            await sendChannelMessage(channel, `If you want to update your subscription, access your customer portal at: ${import.meta.env.CUSTOMER_PORTAL_URL}`)
+
+            // Save email and channel id to Cloudflare KV
+            await KV.put(data.id as string, JSON.stringify({
+              email: email,
+              channel: channel
+            }))
+          }
         }
+        
 
         break;
       }
 
       case "customer.subscription.trial_will_end": {
-        const data = event.data.object as Stripe.Subscription
 
         // Fetch Slack channel id from Cloudflare KV
-        const local = await DEPLOID_SUBSCRIPTIONS.get(data.id)
+        const local = await KV.get(data.id).then((data) => JSON.parse(data ?? "null"))
 
         if(local) {
           // Send trial email
           const html = genericTemplate.replace("HTML_TEXT", `<p>Hello!</p><p>Your trial period is about to end. If you want to update your subscription, access your <a href="${import.meta.env.CUSTOMER_PORTAL_URL}">customer portal</a>.</p><p>Best regards,<br/> Deploid Team.</p>`)
           await sendHTMLEmail("noreply@deploid.studio", local.email, "Welcome to Deploid Studio", html)
+          await sendChannelMessage(local.channel, `Hello! Your trial period is about to end. If you want to update your subscription, access your customer portal: ${import.meta.env.CUSTOMER_PORTAL_URL}`)
+        } else {
+          console.error(`No local data found for subscription ${data.id}`)
         }
       }
 
       case "customer.subscription.updated": {
-        const data = event.data.object as Stripe.Subscription
 
         // Fetch Slack channel id from Cloudflare KV
-        const local = await DEPLOID_SUBSCRIPTIONS.get(data.id)
-
+        const local = await KV.get(data.id).then((data) => JSON.parse(data ?? "null"))
+        
         if(local) {
           // Send Slack message
           sendChannelMessage(local.channel, `Your subscription status changed to: ${data.status} `)
+        } else {
+          console.error(`No local data found for subscription ${data.id}`)
         }
       }
+
+      case "customer.subscription.deleted": {
+          
+          // Fetch Slack channel id from Cloudflare KV
+          const local = await KV.get(data.id).then((data) => JSON.parse(data ?? "null"))
+  
+          if(local) {
+            // Send Slack message
+            sendChannelMessage(local.channel, `Your subscription was deleted.`)
+          } else {
+            console.error(`No local data found for subscription ${data.id}`)
+          }
+      }
+
+
       default:
         console.log(`Unhandled event type ${event.type}`)
     }
