@@ -23,4 +23,5 @@ pnpm-debug.log*
 # Cloudflare functions build
 functions/
 
+# Wrangler
 .wrangler/
