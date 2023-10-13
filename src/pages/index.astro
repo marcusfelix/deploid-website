@@ -81,7 +81,7 @@ const kits = await Astro.glob('./kits/*.md');
 					<div class="flex justify-between">
 						<span class="py-2 flex items-center gap-2 text-md text-zinc-500">3 days to try</span>
 						<span></span>
-						<a href="https://buy.stripe.com/test_6oE5lva8keu6bK0bII" target="_blank" class="px-4 py-2 rounded-lg flex items-center gap-2 text-lg bg-blue-700 text-blue-100">Subscribe <IconArrowRight/></a>
+						<a href={import.meta.env.DESIGN_PRODUCT_URL} target="_blank" class="px-4 py-2 rounded-lg flex items-center gap-2 text-lg bg-blue-700 text-blue-100">Subscribe <IconArrowRight/></a>
 					</div>
 				</div>
 				<div class="p-6 flex flex-col gap-4 border-2 border-zinc-800 rounded-2xl">
@@ -93,7 +93,7 @@ const kits = await Astro.glob('./kits/*.md');
 					<div class="flex-1"></div>
 					<div class="flex justify-between">
             <span></span>
-						<a href="https://buy.stripe.com/test_6oE5lva8keu6bK0bII" target="_blank" class="px-4 py-2 rounded-lg flex items-center gap-2 text-lg bg-blue-700 text-blue-100">Subscribe <IconArrowRight/></a>
+						<a href={import.meta.env.CODE_PRODUCT_URL} target="_blank" class="px-4 py-2 rounded-lg flex items-center gap-2 text-lg bg-blue-700 text-blue-100">Subscribe <IconArrowRight/></a>
 					</div>
 				</div>
 				
@@ -106,7 +106,7 @@ const kits = await Astro.glob('./kits/*.md');
 	<section class="container mx-auto px-4">
 		<div class="flex flex-col gap-8">
 			<nav class="w-full">
-				<span class="flex items-center gap-4 text-4xl font-semibold"><IconArrowDownRight size={48}/>Services & frequent questions</span>
+				<span class="flex items-center gap-4 text-4xl font-semibold"><IconArrowDownRight size={48}/>Services</span>
 			</nav>
 			<div class="w-full grid grid-cols-1 md:grid-cols-4 gap-x-4 gap-y-6">
 				<div class="px-1 flex gap-4 items-center text-lg"><span class="text-zinc-500"><IconEdit/></span> Branding</div>
@@ -123,11 +123,11 @@ const kits = await Astro.glob('./kits/*.md');
 			</div>
 		</div>
 	</section>
-	<div class="h-8"></div>
+	<div class="h-32"></div>
 	<section class="container mx-auto px-4">
-		<div class="flex flex-col gap-8">
+		<div class="flex flex-col gap-12">
 			<nav class="">
-				<!-- <a class="flex items-center gap-4 text-4xl font-semibold"><IconArrowDownRight size={48}/> Frequent questions</a> -->
+				<a class="flex items-center gap-4 text-4xl font-semibold"><IconArrowDownRight size={48}/> Frequent questions</a>
 			</nav>
 			<div class="w-full flex flex-col gap-6">
 				<details>

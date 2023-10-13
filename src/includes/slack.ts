@@ -45,3 +45,17 @@ export const createAndInviteUserToSlack = async (slug: string, email: string): P
 
   return { channel, admin, invites }
 }
+
+export const sendChannelMessage = async (channel: string, message: string): Promise<any> => {
+  return fetch("https://slack.com/api/chat.postMessage", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+      "Authorization": `Bearer ${import.meta.env.SLACK_TOKEN}`,
+    },
+    body: JSON.stringify({
+      channel: channel,
+      text: message
+    })
+  }).then((data) => data.json() as any)
+}
