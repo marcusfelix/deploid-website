@@ -1,22 +1,73 @@
 ---
-import Gallery from '../components/gallery';
-import Heading from '../components/heading';
 import Warpspeed from '../components/warpspeed.astro';
 import Website from '../layouts/website.astro';
-import { IconArrowDownRight, IconArrowRight, IconBrandFirebase, IconBrandSupabase, IconCircleSquare, IconDeviceDesktop, IconDeviceTablet, IconEdit, IconPencil, IconPointer, IconServer, IconWorld } from '@tabler/icons-preact';
+import { IconArrowDownRight, IconArrowRight, IconBrandFirebase, IconBrandSupabase, IconCircleDotted, IconCircleSquare, IconDeviceDesktop, IconDeviceTablet, IconEdit, IconPencil, IconPointer, IconServer, IconWorld } from '@tabler/icons-preact';
 
 const kits = await Astro.glob('./kits/*.md');
 ---
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" is:inline></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" is:inline></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js" is:inline></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js" is:inline></script>
+<script>
+	gsap.registerPlugin(ScrollTrigger);
+	gsap.registerPlugin(ScrollToPlugin);
+	gsap.registerPlugin(TextPlugin);
+	gsap.to('.row', {
+		scrollTrigger: {
+			trigger: '.no-scroll',
+			start: 'center bottom',
+			scrub: 0.3,
+		},
+		x: -600,
+	});
+	gsap.to(".fadein", {
+		duration: 0.3,
+		opacity: 1,
+		delay: 1
+	});
+	gsap.to("#heading", {
+		duration: 1,
+		text: "Unlimited design & development partner — one task at a time",
+		ease: "none"
+	});
+	gsap.to(".fadein", {
+		duration: 0.3,
+		opacity: 1,
+		delay: 1
+	});
+</script>
 <Website title="Deploid Studio">
 	<div class="absolute top-0 left-0 right-0 h-[800px] warp">
 		<div class="absolute w-full h-3/4 bottom-0 bg-gradient-to-b from-transparent to-black"></div>
 		<Warpspeed/>
 	</div>
 	<main class="relative container mx-auto px-4">
-		<Heading client:load/>
+		<!-- <Heading client:load/> -->
+		<div class="flex flex-col items-start max-w-5xl py-10 md:py-28 gap-10">
+			<h1 class="text-6xl md:text-8xl font-semibold tracking-tight" id="heading"></h1>
+			<p class="text-2xl text-zinc-500 max-w-2xl fadein opacity-0">Best time to value for your digital product development with unlimited services from design to code.</p>
+			<div class="flex flex-col md:flex-row items-center gap-6 fadein opacity-0">
+				<a href="https://deploidstudio.slack.com/team/U05V9NC2RJR" target="_blank" class="bg-blue-700 text-blue-100 text-xl px-5 py-3 rounded-lg">Let's talk — <span class="opacity-50">Slack</span></a>
+				<div class="flex items-center justify-center gap-2 text-lg">
+					<span class="flex items-center justify-center relative aspect-square h-12 w-12">
+						<span class="slow-spin absolute text-zinc-500"><IconCircleDotted size={48} /></span>
+						<span class="pt-[1px] font-bold">5</span>
+					</span>
+					Spots available
+				</div>
+			</div>
+		</div>
 	</main>
-	<Gallery client:load/>
+	<div class="overflow-y-auto snap-x md:snap-none no-scroll">
+    <div class="flex gap-6 h-full md:h-[560px] pb-4 mx-6 row fadein opacity-0">
+      <img class="aspect-square bg-zinc-800 object-cover snap-center rounded-3xl shrink-0" src="/assets/expo-1.jpg"/>
+      <img class="aspect-square bg-zinc-800 object-cover snap-center rounded-3xl shrink-0" src="/assets/expo-2.jpg"/>
+      <img class="aspect-square bg-zinc-800 object-cover snap-center rounded-3xl shrink-0" src="/assets/expo-3.jpg"/>
+      <div class="aspect-square bg-zinc-800 object-cover snap-center rounded-3xl shrink-0"></div>
+      <div class="aspect-square bg-zinc-800 object-cover snap-center rounded-3xl shrink-0"></div>
+    </div>
+  </div>
 	<div class="h-20 md:h-32"></div>
 	<section class="container mx-auto px-4 flex flex-col gap-10 xl:flex-row items-start">
 		<div class="flex flex-1">
@@ -25,11 +76,11 @@ const kits = await Astro.glob('./kits/*.md');
 		<div class="flex-1 grid grid-cols-2 gap-10 py-3 max-w-lg">
 			<div class="flex flex-col gap-4">
 				<big class="text-6xl">10+</big>
-				<p class="text-xl text-zinc-500">Projects delivered on time in the last 3y</p>
+				<p class="text-xl text-zinc-500">Projects delivered the last 3y</p>
 			</div>
 			<div class="flex flex-col gap-4">
 				<big class="text-6xl">35m</big>
-				<p class="text-xl text-zinc-500">Average time to deliver revision tasks ¹</p>
+				<p class="text-xl text-zinc-500">Average time to deliver revision tasks</p>
 			</div>
 			<div class="flex flex-col gap-4">
 				<big class="text-6xl">180d</big>
@@ -41,9 +92,7 @@ const kits = await Astro.glob('./kits/*.md');
 			</div>
 		</div>
 	</section>
-	<div class="h-20 md:h-32">
-		<a name="starterkits"></a>
-	</div>
+	<!-- <div class="h-20 md:h-32" id="starter"></div>
 	<hr class="border-zinc-700"/>
 	{kits.map((e) => <a href={`kits/${e.file.split('/').at(-1)?.split('.').at(0)}`} class="hover:bg-zinc-300/10 block border-b-[1px] border-zinc-700 transition-colors">
 		<div class="container mx-auto py-8 px-4">
@@ -59,14 +108,12 @@ const kits = await Astro.glob('./kits/*.md');
 				<div class="aspect-video w-full max-w-4xl bg-zinc-300/10 rounded-2xl"></div>
 			</div>	
 		</div>
-	</a>)}
-	<div class="h-20 md:h-32">
-		<a name="pricing"></a>
-	</div>
+	</a>)} -->
+	<div class="h-20 md:h-32"></div>
 	<section class="container mx-auto px-4">
 		<div class="flex flex-col gap-8">
 			<nav class="w-full max-w-sm">
-				<a class="flex items-center gap-4 text-4xl font-semibold"><IconArrowDownRight size={48}/> Pricing</a>
+				<a class="flex items-center gap-4 text-4xl font-semibold" id="pricing"><IconArrowDownRight size={48}/> Pricing</a>
 				<div class="h-2"></div>
 				<p class="text-zinc-500 max-w-xs">You can change, pause or cancel your subscription anytime</p>
 			</nav>
@@ -96,17 +143,14 @@ const kits = await Astro.glob('./kits/*.md');
 						<a href={import.meta.env.CODE_PRODUCT_URL} target="_blank" class="px-4 py-2 rounded-lg flex items-center gap-2 text-lg bg-blue-700 text-blue-100">Subscribe <IconArrowRight/></a>
 					</div>
 				</div>
-				
 			</div>
 		</div>
 	</section>
-	<div class="h-20 md:h-32">
-		<a name="services"></a>
-	</div>
+	<div class="h-20 md:h-32"></div>
 	<section class="container mx-auto px-4">
 		<div class="flex flex-col gap-8">
 			<nav class="w-full">
-				<span class="flex items-center gap-4 text-4xl font-semibold"><IconArrowDownRight size={48}/>Services</span>
+				<span class="flex items-center gap-4 text-4xl font-semibold" id="services"><IconArrowDownRight size={48}/>Services</span>
 			</nav>
 			<div class="w-full grid grid-cols-1 md:grid-cols-4 gap-x-4 gap-y-6">
 				<div class="px-1 flex gap-4 items-center text-lg"><span class="text-zinc-500"><IconEdit/></span> Branding</div>

@@ -57,12 +57,12 @@ export const POST: APIRoute = async function get({ params, request, locals }: an
           const channel = invite.channel.channel.id
           
           // Send welcome messages
-          const html = welcomeTemplate.replace("SLACK_URL", `https://deploidstudio.slack.com/archives/${channel}`).replace("PORTAL_URL", import.meta.env.CUSTOMER_PORTAL_URL);
+          const html = welcomeTemplate.replace("SLACK_URL", `https://deploidstudio.slack.com/messages/${channel}`).replace("PORTAL_URL", import.meta.env.CUSTOMER_PORTAL_URL);
           await sendHTMLEmail("noreply@deploid.studio", email, "Welcome to Deploid Studio", html)
           if(channel){
             await sendChannelMessage(channel, "Welcome to *Deploid Studio*! We're glad to have you here. If you have any questions, please let us know.")
             await sendChannelMessage(channel, "In this channel we will be expecting your tasks for our team. You can share ideas, files and links to get more elaborated feedback.")
-            await sendChannelMessage(channel, "We have a no-call policy to keep a fast and asynchronous communication. If you need to talk to us in a multimedia way, like a screen cast or webcam recording, consider using https://www.loom.com/ and share the link here. We will be happy to help you.")
+            await sendChannelMessage(channel, "We have a no-call policy to keep a fast and asynchronous communication. If you need to talk to us in a multimedia way, like a screen cast or webcam recording, consider using Slack's audio/video clip feature. We will be happy to help you.")
             await sendChannelMessage(channel, `If you want to update your subscription, access your customer portal at: ${import.meta.env.CUSTOMER_PORTAL_URL}`)
 
             // Save email and channel id to Cloudflare KV

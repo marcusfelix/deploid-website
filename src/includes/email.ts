@@ -46,11 +46,16 @@ export const welcomeTemplate = `
       .email {
         max-width: 640px;
       }
+      .logo {
+        font-size: 72px;
+        color: #999;
+        margin: 0px -16px;
+      }
     </style>
   </head>
   <body>
     <div class="email">
-      <img alt="Deploid Studio" title="Deploid Studio" style="display:block" width="32" height="32" src="https://website-71q.pages.dev/logo-gray.svg"/>
+      <div class="logo">﹡</div>
       <p>Hello!</p>
       <p>Welcome to Deploid Studio. To start sharing with our team what you want to build, please, access your <a href="SLACK_URL">private Slack channel</a> (you will receive a Slack e-mail as well).</p>
       <p>You have absolute controll over your subscription at your <a href="PORTAL_URL">customer portal</a>. </p>
@@ -78,11 +83,16 @@ export const genericTemplate = `
       .email {
         max-width: 640px;
       }
+      .logo {
+        font-size: 72px;
+        color: #999;
+        margin: 0px -16px;
+      }
     </style>
   </head>
   <body>
     <div class="email">
-      <img alt="Deploid Studio" title="Deploid Studio" style="display:block" width="32" height="32" src="https://website-71q.pages.dev/logo-gray.svg"/>
+      <div class="logo">﹡</div>
       HTML_TEXT
     </div>
   </body>
