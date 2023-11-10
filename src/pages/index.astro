@@ -1,9 +1,38 @@
 ---
 import Warpspeed from '../components/warpspeed.astro';
 import Website from '../layouts/website.astro';
-import { IconArrowDownRight, IconArrowRight, IconBrandFirebase, IconBrandSupabase, IconCircleDotted, IconCircleSquare, IconDeviceDesktop, IconDeviceTablet, IconEdit, IconPencil, IconPointer, IconServer, IconWorld } from '@tabler/icons-preact';
+import { IconArrowDownRight, IconArrowRight, IconBrandFirebase, IconBrandGithub, IconBrandSupabase, IconCircleDotted, IconCircleSquare, IconDeviceDesktop, IconDeviceTablet, IconEdit, IconLink, IconPencil, IconPointer, IconServer, IconWorld } from '@tabler/icons-preact';
 
-const kits = await Astro.glob('./kits/*.md');
+const links = [
+	{
+		link: "https://github.com/deploidstudio/hausmeister",
+		image: "/assets/hausmeister-1.jpeg"
+	},
+	{
+		link: "https://github.com/deploidstudio/caster",
+		image: "/assets/caster-1.jpeg"
+	},
+	{
+		link: "https://github.com/deploidstudio/oscorp",
+		image: "/assets/oscorp-1.jpg"
+	},
+	{
+		link: "https://github.com/deploidstudio/caster",
+		image: "/assets/caster-2.jpeg"
+	},
+	{
+		link: "https://github.com/deploidstudio/oscorp",
+		image: "/assets/oscorp-2.jpg"
+	},
+	{
+		link: "https://github.com/deploidstudio/caster",
+		image: "/assets/caster-3.jpeg"
+	},
+	{
+		link: "https://github.com/deploidstudio/hausmeister",
+		image: "/assets/hausmeister-2.jpeg"
+	}
+]
 ---
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" is:inline></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" is:inline></script>
@@ -48,7 +77,7 @@ const kits = await Astro.glob('./kits/*.md');
 			<h1 class="text-6xl md:text-8xl font-semibold tracking-tight" id="heading"></h1>
 			<p class="text-2xl text-zinc-500 max-w-2xl fadein opacity-0 leading-relaxed">Best time to value for your digital product development with unlimited services from design to code.</p>
 			<div class="flex flex-col md:flex-row items-center gap-6 fadein opacity-0">
-				<a href="https://app.slack.com/client/T06013X3P9S/D05UY4CPXTR" target="_blank" class="bg-blue-700 text-blue-100 text-xl px-5 py-3 rounded-lg">Let's talk — <span class="opacity-50">Slack</span></a>
+				<a href={import.meta.env.SLACK_INVITE_LINK} target="_blank" class="bg-blue-700 text-blue-100 text-xl px-5 py-3 rounded-lg">Let's talk — <span class="opacity-50">Slack</span></a>
 				<div class="flex items-center justify-center gap-2 text-lg">
 					<span class="flex items-center justify-center relative aspect-square h-12 w-12">
 						<span class="slow-spin absolute text-zinc-500"><IconCircleDotted size={48} /></span>
@@ -59,19 +88,27 @@ const kits = await Astro.glob('./kits/*.md');
 			</div>
 		</div>
 	</main>
+	<div class="container mx-auto">
+		<nav class="p-4" id="starter">
+			<a class="flex items-center gap-4 text-2xl"><IconArrowDownRight size={30}/> Starter kits</a>
+		</nav>
+	</div>
 	<div class="overflow-y-auto snap-x md:snap-none no-scroll">
-    <div class="flex gap-6 h-full md:h-[560px] pb-4 mx-6 row fadein opacity-0">
-      <img class="aspect-square bg-zinc-800 object-cover snap-center rounded-3xl shrink-0" src="/assets/expo-1.jpg"/>
-      <img class="aspect-square bg-zinc-800 object-cover snap-center rounded-3xl shrink-0" src="/assets/expo-2.jpg"/>
-      <img class="aspect-square bg-zinc-800 object-cover snap-center rounded-3xl shrink-0" src="/assets/expo-3.jpg"/>
-      <div class="aspect-square bg-zinc-800 object-cover snap-center rounded-3xl shrink-0"></div>
-      <div class="aspect-square bg-zinc-800 object-cover snap-center rounded-3xl shrink-0"></div>
+    <div class="flex gap-8 mx-8 h-[560px] md:h-[760px] pb-4 row fadein opacity-0">
+			{links.map((link) => <a href={link.link} target="_blank" class="block relative shrink-0 rounded-3xl snap-center h-full overflow-hidden aspect-[9/19.5]">
+				<div class="bg-white/80 flex items-center justify-center absolute top-0 right-0 bottom-0 left-0 opacity-0 hover:opacity-100 transition-opacity">
+					<span class="w-12 h-12 rounded-full bg-black flex items-center justify-center">
+						<IconLink/>
+					</span>
+				</div>
+				<img class=" bg-zinc-800 object-cover" src={link.image}/>
+			</a>)}
     </div>
   </div>
-	<div class="h-20 md:h-32"></div>
+	<div class="h-20"></div>
 	<section class="container mx-auto px-4 flex flex-col gap-10 xl:flex-row items-start">
 		<div class="flex flex-1">
-			<h3 class="text-4xl leading-snug md:text-6xl md:leading-tight">Materialize your digital project with an on-demand design & development service without strings attached — as long you have a active subscription you have full access to our service and support.</h3>
+			<h3 class="text-4xl leading-snug md:text-6xl md:leading-tight">Materialize your digital product with an on-demand design & development service without strings attached — as long you have a active subscription you have full access to our service and support.</h3>
 		</div>
 		<div class="flex-1 grid grid-cols-2 gap-10 py-3 max-w-lg">
 			<div class="flex flex-col gap-4">
@@ -109,21 +146,19 @@ const kits = await Astro.glob('./kits/*.md');
 			</div>	
 		</div>
 	</a>)} -->
-	<div class="h-20 md:h-32"></div>
+	<div class="h-20"></div>
 	<section class="container mx-auto px-4">
 		<div class="flex flex-col gap-8">
-			<nav class="w-full max-w-sm">
-				<a class="flex items-center gap-4 text-4xl font-semibold" id="pricing"><IconArrowDownRight size={48}/> Pricing</a>
-				<div class="h-2"></div>
-				<p class="text-zinc-500 max-w-xs">You can change, pause or cancel your subscription anytime</p>
+			<nav id="pricing">
+				<a class="flex items-center gap-4 text-2xl"><IconArrowDownRight size={30}/> Pricing</a>
 			</nav>
-			<div class="w-full grid grid-cols-1 xl:grid-cols-2 gap-4">
+			<div class="w-full grid grid-cols-1 xl:grid-cols-3 gap-4">
         <div class="p-6 flex flex-col gap-4 border-2 border-zinc-800 rounded-2xl">
 					<div class="flex items-center text-xl gap-4">
 						<h3 class="font-semibold text-2xl">Design</h3>
 						<span class="bg-purple-600/40 text-purple-200 text-[18px] px-3 py-1 rounded-lg">$249 per week</span>
 					</div>
-					<p class="text-lg">Elaborate your idea with hi-fidelity mockups and feedback loops before committing to code</p>	
+					<p class="text-lg opacity-70">Elaborate your idea with hi-fidelity mockups and feedback loops before committing to code</p>	
 					<div class="flex-1"></div>
 					<div class="flex justify-between">
 						<span class="py-2 flex items-center gap-2 text-md text-zinc-500">3 days to try</span>
@@ -136,21 +171,32 @@ const kits = await Astro.glob('./kits/*.md');
 						<h3 class="font-semibold text-2xl">Code</h3>
 						<span class="bg-cyan-600/40 text-cyan-200 text-[18px] px-3 py-1 rounded-lg">$749 per week</span>
 					</div>
-					<p class="text-lg">Full development service to materialized your vision with code and unlimited incremental changes</p>	
+					<p class="text-lg opacity-70">Full development service to materialize your vision with production code and unlimited incremental changes</p>	
 					<div class="flex-1"></div>
 					<div class="flex justify-between">
             <span></span>
 						<a href={import.meta.env.CODE_PRODUCT_URL} target="_blank" class="px-4 py-2 rounded-lg flex items-center gap-2 text-lg bg-blue-700 text-blue-100">Subscribe <IconArrowRight/></a>
 					</div>
 				</div>
+				<div class="p-6 flex flex-col gap-4 border-2 border-zinc-800 rounded-2xl">
+					<div class="flex items-center text-xl gap-4">
+						<h3 class="font-semibold text-2xl">Enterprise</h3>
+					</div>
+					<p class="text-lg opacity-70">For custom arrangements and one-of-a-kind projects, let's talk about it</p>	
+					<div class="flex-1"></div>
+					<div class="flex justify-between">
+            <span></span>
+						<a href={import.meta.env.DISCORD_INVITE_LINK} target="_blank" class="px-4 py-2 rounded-lg flex items-center gap-2 text-lg bg-blue-700 text-blue-100">Let's talk <IconArrowRight/></a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
-	<div class="h-20 md:h-32"></div>
+	<div class="h-20"></div>
 	<section class="container mx-auto px-4">
 		<div class="flex flex-col gap-8">
-			<nav class="w-full">
-				<span class="flex items-center gap-4 text-4xl font-semibold" id="services"><IconArrowDownRight size={48}/>Services</span>
+			<nav id="services">
+				<a class="flex items-center gap-4 text-2xl"><IconArrowDownRight size={30}/> Services</a>
 			</nav>
 			<div class="w-full grid grid-cols-1 md:grid-cols-4 gap-x-4 gap-y-6">
 				<div class="px-1 flex gap-4 items-center text-lg"><span class="text-zinc-500"><IconEdit/></span> Branding</div>
@@ -167,11 +213,11 @@ const kits = await Astro.glob('./kits/*.md');
 			</div>
 		</div>
 	</section>
-	<div class="h-32"></div>
+	<div class="h-20"></div>
 	<section class="container mx-auto px-4">
 		<div class="flex flex-col gap-12">
 			<nav class="">
-				<a class="flex items-center gap-4 text-4xl font-semibold"><IconArrowDownRight size={48}/> Frequent questions</a>
+				<a class="flex items-center gap-4 text-2xl"><IconArrowDownRight size={30}/> FAQ</a>
 			</nav>
 			<div class="w-full flex flex-col gap-6">
 				<details>
