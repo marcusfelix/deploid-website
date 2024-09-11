@@ -1,0 +1,11 @@
+---
+import Website from "./website.astro";
+
+const { frontmatter } = Astro.props;
+---
+
+<Website title={frontmatter.title + " - Deploid Studio"}>
+  <div class="container mx-auto max-w-2xl px-4 py-20 prose-lg">
+    <slot/>
+  </div>
+</Website>
