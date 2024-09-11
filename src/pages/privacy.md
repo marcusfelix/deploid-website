@@ -37,4 +37,4 @@ Deploid Studio reserve the right to update or change our Privacy Policy at any t
 
 ## Contact Information
 
-For any questions or concerns regarding the privacy policy, please send us an email to hello@deploid.studio.
+For any questions or concerns regarding the privacy policy, please send us an email to marcus@deploid.studio.

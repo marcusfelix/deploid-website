@@ -77,7 +77,7 @@ const links = [
 			<h1 class="text-6xl md:text-8xl font-semibold tracking-tight" id="heading"></h1>
 			<p class="text-2xl text-zinc-500 max-w-2xl fadein opacity-0 leading-relaxed">Best time to value for your digital product development with unlimited services from design to code.</p>
 			<div class="flex flex-col md:flex-row items-center gap-6 fadein opacity-0">
-				<a href="https://deploidstudio.slack.com/team/U05V9NC2RJR" target="_blank" class="bg-blue-700 text-blue-100 text-xl px-5 py-3 rounded-lg">Let's talk — <span class="opacity-50">Slack</span></a>
+				<a href={import.meta.env.SLACK_INVITE_LINK} target="_blank" class="bg-blue-700 text-blue-100 text-xl px-5 py-3 rounded-lg">Let's talk — <span class="opacity-50">Slack</span></a>
 				<div class="flex items-center justify-center gap-2 text-lg">
 					<span class="flex items-center justify-center relative aspect-square h-12 w-12">
 						<span class="slow-spin absolute text-zinc-500"><IconCircleDotted size={48} /></span>
@@ -90,19 +90,14 @@ const links = [
 	</main>
 	<div class="container mx-auto">
 		<nav class="p-4" id="starter">
-			<a class="flex items-center gap-4 text-2xl"><IconArrowDownRight size={30}/> Starter kits</a>
+			<a class="flex items-center gap-4 text-2xl"><IconArrowDownRight size={30}/> Samples</a>
 		</nav>
 	</div>
 	<div class="overflow-y-auto snap-x md:snap-none no-scroll">
     <div class="flex gap-8 mx-8 h-[560px] md:h-[760px] pb-4 row fadein opacity-0">
-			{links.map((link) => <a href={link.link} target="_blank" class="block relative shrink-0 rounded-3xl snap-center h-full overflow-hidden aspect-[9/19.5]">
-				<div class="bg-white/80 flex items-center justify-center absolute top-0 right-0 bottom-0 left-0 opacity-0 hover:opacity-100 transition-opacity">
-					<span class="w-12 h-12 rounded-full bg-black flex items-center justify-center">
-						<IconLink/>
-					</span>
-				</div>
+			{links.map((link) => <div class="block relative shrink-0 rounded-3xl snap-center h-full overflow-hidden aspect-[9/19.5]">
 				<img class=" bg-zinc-800 object-cover" src={link.image}/>
-			</a>)}
+			</div>)}
     </div>
   </div>
 	<div class="h-20"></div>

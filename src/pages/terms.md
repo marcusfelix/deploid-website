@@ -11,7 +11,7 @@ These terms of service ("Terms") apply to your access and use of Deploid Studio 
 
 ## Accepting these Terms
 
-If you access or use the Service, it means you agree to be bound by all of the terms below. So, before you use the Service, please read all of the terms. If you don't agree to all of the terms below, please do not use the Service. Also, if a term does not make sense to you, please let us know by e-mailing hello@deploid.studio.
+If you access or use the Service, it means you agree to be bound by all of the terms below. So, before you use the Service, please read all of the terms. If you don't agree to all of the terms below, please do not use the Service. Also, if a term does not make sense to you, please let us know by e-mailing marcus@deploid.studio.
 
 ## Changes to these Terms
 
@@ -110,4 +110,4 @@ Please let us know what you think of the Service, these Terms and, in general, D
 
 ## Questions & Contact Information
 
-Questions or comments about the Service may be directed to us at the email address [hello@deploid.studio](mailto:hello@deploid.studio).
+Questions or comments about the Service may be directed to us at the email address [marcus@deploid.studio](mailto:marcus@deploid.studio).
